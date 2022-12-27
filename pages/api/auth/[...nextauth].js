@@ -5,6 +5,7 @@ import clientPromise from "../../../src/helper/mongodb";
 import database from "../../../src/helper/database";
 import User from "../../../src/models/user";
 import { compare } from "bcrypt";
+import GoogleProvider from 'next-auth/providers/google';
 
 export default NextAuth({
 	providers: [
@@ -46,6 +47,10 @@ export default NextAuth({
 				return user;
 			},
 		}),
+		GoogleProvider({
+			clientId:process.env.GOOGLE_CLIENT_ID,
+			clientSecret:process.env.GOOGLE_CLIENT_SECRET,
+		}),
 	],
 	pages: {
 		signIn: "/signin",
@@ -68,3 +73,4 @@ export default NextAuth({
 		},
 	},
 });
+
