@@ -9,10 +9,9 @@ import eyeIcon from "../public/images/icons/eye-open.png";
 import eyeHideIcon from "../public/images/icons/eye-close.png";
 import funEyeIcon from "../public/images/icons/fun-eye.png";
 
-import { useSession, signIn, signOut } from "next-auth/react";
+import {signIn, signOut } from "next-auth/react";
 
 export default function SignIn({ csrfToken }) {
-	const {data:session}=useSession();
 	const [value, setValue] = useState("");
 	const [buttonClass, setButtonClass] = useState(0);
 	const [showPassword, setShowPassword] = useState(0);
@@ -136,7 +135,7 @@ export default function SignIn({ csrfToken }) {
 									Sign in
 								</button>
 								<button
-								className={`mt-8 py-2 px-8 mx-auto border-none rounded-md bg-white fade-out hover:bg-indigo-600 hover:text-white ${buttonClass}`} onClick={() => signIn()}>Sign in with Google</button>
+								<button className="mt-8 py-2 px-8 mx-auto border-none rounded-md bg-white fade-out hover:bg-indigo-600 hover:text-white" onClick={() => signIn("google")}>Sign in with Google</button>
 							</div>
 							<p className="mt-6 text-sm text-center text-gray-400">
 								Don&#39;t have an account yet?
